@@ -4,7 +4,7 @@ The Autologs API allows clients to create, read, update, and delete records for 
 
 ### Entities
 ##### User
-`User` objects exist within the global `MISCAPI` domain, and so are not directly accessible via the `auto-log` application namespace. However, these are the relevant relationships that exist within the `auto-log` scope.
+`User` objects exist within the global `MISCAPI` domain, and so are not directly accessible via the `auto-log` application namespace. However, these are the relevant relationships that exist within the `auto-log` scope. For more on managing `User` objects, see the [global MISCAPI documentation](../../../README.md).
 
 |Key|Type|Required|Description|
 |---|----|--------|-----------|
@@ -44,6 +44,7 @@ A `Log` is the most critical object within the `auto-log` application namespace,
 |updatedAt|number|`true`|Metafield indicating the date the record was last updated.|
 
 ### API
+For more information in getting authorized to send requests to `auto-logs`, please read [global MISCAPI documentation](../../../README.md).
 
 |Method | Endpoint | Description |
 |-------|----------|-------------|

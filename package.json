@@ -8,6 +8,7 @@
     "@sailshq/connect-redis": "^3.2.1",
     "@sailshq/lodash": "^3.10.3",
     "@sailshq/socket.io-redis": "^5.2.0",
+    "bcrypt": "^4.0.1",
     "db-migrate": "^0.11.6",
     "db-migrate-pg": "^1.0.0",
     "dotenv": "^8.1.0",
@@ -33,7 +34,8 @@
     "test": "npm run lint && npm run custom-tests && echo 'Done.'",
     "lint": "./node_modules/eslint/bin/eslint.js . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
     "custom-tests": "echo \"(No other custom tests yet.)\" && echo",
-    "migrate": "db-migrate --config ./database.json --env production up"
+    "migrate": "db-migrate --config ./database.json --env production up",
+    "console": "sails console --dontLift"
   },
   "main": "app.js",
   "repository": {

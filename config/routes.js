@@ -17,7 +17,13 @@ const resource = (app, resourceName) => ({
 });
 
 const routes = {
-  '/': { action: 'miscapi' },
+  /////////// MISCAPI ///////////
+  '/': { action: 'miscapi' }, // TODO: I'd like to make this a small documentation react app.
+  // Users
+  'GET /global/user': { action: 'global/users/whoami' },
+  'POST /global/users': { action: 'global/users/signup' },
+  'POST /global/user/session': { action: 'global/users/login' },
+  'DELETE /global/user/session': { action: 'global/users/logout' },
 
   ////////// AUTOLOGS //////////
   // Logs
@@ -38,10 +44,6 @@ const routes = {
 
   ////////// FASTLANG //////////
   '/fastlang/graphql': { action: 'fastlang/graphql' },
-  // Languages
-  // ...resource('fastlang', 'language'),
-  // Cards
-  // ...resource('fastlang', 'card'),
 };
 console.log(routes);
 
