@@ -13,7 +13,7 @@
  * https://sailsjs.com/config/datastores
  */
 
-module.exports.datastores = {
+let datastores = {
 
 
   /***************************************************************************
@@ -58,9 +58,13 @@ module.exports.datastores = {
     // url: 'mysql://user:password@host:port/database',
 
   },
-  // production: {
-  //   url: process.env.DATABASE_URL
-  // }
-
 
 };
+
+if (process.env.NODE_ENV === "production"){
+  datastores.production = {
+    url: process.env.DATABASE_URL
+  };
+}
+
+module.exports.datastores = datastores;
