@@ -8,6 +8,7 @@
   },
 
   "production": {
+    "driver": "pg",
     "database_url": {
       "ENV": "DATABSE_URL"
     }
