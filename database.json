@@ -1,0 +1,15 @@
+{
+  "defaultEnv": "development",
+  "development": {
+    "driver": "pg",
+    "database": "miscapi",
+    "host": "localhost",
+    "port": 5432
+  },
+
+  "production": {
+    "database_url": {
+      "ENV": "DATABSE_URL"
+    }
+  }
+}
