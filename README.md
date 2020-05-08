@@ -26,8 +26,8 @@ curl -H "Authorization: Basic: $AUTOLOGS_AUTHORIZATION_KEY" -H "X-Identity: $AUT
 
 
 ### Available APIs
-- [AutoLogs](./api/controller/autolog/README.md)
-- [Fastlang](./api/controller/fastlang/README.md)
+- [AutoLogs](./api/controllers/autolog/README.md)
+- [Fastlang](./api/controllers/fastlang/README.md)
 
 ### Global
 #### Users
@@ -41,9 +41,9 @@ curl -H "Authorization: Basic: $AUTOLOGS_AUTHORIZATION_KEY" -H "X-Identity: $AUT
 |lastName|string|`true`|User's last name|
 |nickname|string|`false`|Optional field for Client convenience used for an easy reference to a user|
 |description|string|`false`|Optional field for Client convenience used to describe a user|
-|vehicles|[[Vehicle](./api/controller/autolog/README.md)]|`true`|A User has many Vehicles. If a user has no Vehicle objects associated with it, this will be represented as an empty array.|
-|logs|[[Log](./api/controller/autolog/README.md)]|`true`|A User has many Logs. If a user has no Log objects associated with it, this will be represented as an empty array.|
-|cards|[[Card](./api/controller/fastlang/README.md)]|`true`|A User has many cards. If a user has no Cards associated with it, this will be represented with an empty array.|
+|vehicles|[[Vehicle](./api/controllers/autolog/README.md)]|`true`|A User has many Vehicles. If a user has no Vehicle objects associated with it, this will be represented as an empty array.|
+|logs|[[Log](./api/controllers/autolog/README.md)]|`true`|A User has many Logs. If a user has no Log objects associated with it, this will be represented as an empty array.|
+|cards|[[Card](./api/controllers/fastlang/README.md)]|`true`|A User has many cards. If a user has no Cards associated with it, this will be represented with an empty array.|
 |createdAt|number|`true`|Metafield indicating the date the record was initially created.|
 |updatedAt|number|`true`|Metafield indicating the date the record was last updated.|
 
