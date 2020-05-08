@@ -63,6 +63,7 @@ let datastores = {
 
 if (process.env.NODE_ENV === "production"){
   datastores.production = {
+    adapter: require('sails-postgresql'),
     url: process.env.DATABASE_URL
   };
 }
