@@ -2,6 +2,10 @@
 ### Overview
 MISCAPI is a multi-namespaces API containing a framework for building smaller sub-APIs using [Sails.js](https://sailsjs.com/).
 
+### Available APIs
+- [AutoLogs](./api/controllers/autolog/README.md)
+- [Fastlang](./api/controllers/fastlang/README.md)
+
 ### Making Requests
 There are **two critical keys** in sending requests to most `MISCAPI` applications. The first is an application identifier and the second is some sort of user authentication.
 ##### Application Authorization
@@ -24,12 +28,7 @@ X-Identity $AUTHORIZED_USER_TOKEN
 curl -H "Authorization: Basic: $AUTOLOGS_AUTHORIZATION_KEY" -H "X-Identity: $AUTHORIZED_USER_TOKEN" http://miscapi.herokuapp.com/auto-logs/logs
 ```
 
-
-### Available APIs
-- [AutoLogs](./api/controllers/autolog/README.md)
-- [Fastlang](./api/controllers/fastlang/README.md)
-
-### Global
+### Global Entities
 #### Users
 `User` objects exist within the global `MISCAPI` domain. They are critical in the process of getting authenticated. Since it is is a critical preauthorization step to have a user, **`User` endpoints do not require typical authorization steps.**
 
