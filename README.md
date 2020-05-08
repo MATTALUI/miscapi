@@ -66,17 +66,20 @@ curl -H "Authorization: Basic: $AUTOLOGS_AUTHORIZATION_KEY" -H "X-Identity: $AUT
 
 |Method | Endpoint | Description |
 |-------|----------|-------------|
-|POST|`/global/users`| Registers a new user to `MISCAPI`. In addition to the base `User` attributes, this endpoint also requires a `password` and `confirmPassword` data in order to enable a password for the user. These two much match in order to register the user. Returns the newly created user entity.|
+|POST|`/global/users`| Registers a new user to `MISCAPI`. In addition to the base `User` attributes, this endpoint also requires a `password` and `confirmPassword` data in order to enable a password for the user. These two much match in order to register the user. Since it also logs the user in, the return value includes the newly created User as well as the authenticated user token.|
 ```json
 {
-  "id": 2,
-  "createdAt": 1588970425600,
-  "updatedAt": 1588970425600,
-  "email": "matt2@example.com",
-  "firstName": "Matt",
-  "lastName": "Bummer",
-  "nickname": "NEW MATTALUI",
-  "description": "I am Matt."
+  "user": {
+    "id": 2,
+    "createdAt": 1588970425600,
+    "updatedAt": 1588970425600,
+    "email": "matt2@example.com",
+    "firstName": "Matt",
+    "lastName": "Bummer",
+    "nickname": "NEW MATTALUI",
+    "description": "I am Matt."
+  },
+  "userToken": "SUPERSECRETTOKENWOWZA"
 }
 ```
 
