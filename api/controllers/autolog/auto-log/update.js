@@ -38,7 +38,6 @@ module.exports = {
   },
   exits: {},
   fn: async function (inputs) {
-    console.log(inputs);
     return await AutoLogs.updateOne({
       id: inputs.logId
     }).set({...inputs});

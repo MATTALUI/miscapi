@@ -74,7 +74,6 @@ var schema = buildSchema(`
 `);
 
 const associateLanguages = async ({ cards }) => {
-  console.log(cards);
   // This language association is a mega hack. I don't know what I'm doing...
   const languageIds = _.flatten(cards.map(card => card.words.map(word => word.language)));
   const languages = await Languages.find({ id: languageIds });

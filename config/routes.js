@@ -7,6 +7,9 @@
  * For more information on configuring custom routes, check out:
  * https://sailsjs.com/anatomy/config/routes-js
  */
+const path = require('path');
+const fs = require('fs');
+
 const resource = (app, resourceName) => ({
   [`GET /${app}/${resourceName}s`]: { action: `${app}/${resourceName}s/index` },
   [`GET /${app}/${resourceName}s/:${resourceName}Id`]: { action: `${app}/${resourceName}s/show` },
@@ -17,8 +20,6 @@ const resource = (app, resourceName) => ({
 });
 
 const routes = {
-  /////////// MISCAPI ///////////
-  '/': { action: 'miscapi' }, // TODO: I'd like to make this a small documentation react app.
   // Users
   'GET /global/user': { action: 'global/users/whoami' },
   'POST /global/users': { action: 'global/users/signup' },
@@ -44,6 +45,25 @@ const routes = {
 
   ////////// FASTLANG //////////
   '/fastlang/graphql': { action: 'fastlang/graphql' },
+
+  /////////// MISCAPI ///////////
+  'GET /static/*': {
+    skipAssets: false,
+    fn: async (req, res) => {
+      const filePath = path.join(__dirname, '../frontend/build', req.path);
+      console.log(filePath);
+      if (fs.existsSync(filePath)){
+        res.sendFile(filePath);
+      } else {
+        res.sendStatus(404);
+      }
+    }
+  },
+  'GET /*': {
+    skipAssets: false,
+    fn: async (req, res) => res.sendFile(path.join(__dirname,'../frontend/build/index.html')),
+  },
+  // 'GET /*': { action: 'miscapi' },
 };
 console.log(routes);
 

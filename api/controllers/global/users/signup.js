@@ -52,15 +52,20 @@ module.exports = {
     const saltRounds = 10;
     const hash = await bcrypt.hash(password, saltRounds);
 
-    const newUser = await Users.create({
-      passwordHash: hash,
-      email,
-      firstName,
-      lastName,
-      nickname,
-      description,
-    }).fetch();
-    delete newUser.passwordHash;
+    try {
+      const newUser = await Users.create({
+        passwordHash: hash,
+        email,
+        firstName,
+        lastName,
+        nickname,
+        description,
+      }).fetch();
+      delete newUser.passwordHash;
+    } catch (error){
+      this.res.status(406);
+      return { error: "User for that email already exists." };
+    }
 
     const token = jwt.sign({ ...newUser }, process.env.JWTSECRET);
     this.res.cookie('identity', token, { signed: true, httpOnly: true });
