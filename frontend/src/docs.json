@@ -1,0 +1,26 @@
+{
+  "name": "MISCAPI",
+  "intro": "Welcome to MISCAPI",
+  "overview": {
+    "name": "Overview"
+  },
+  "apps": {
+    "auto-logs": {
+      "name": "AutoLogs",
+      "key": "auto-logs",
+      "urlPrefix": "docs/",
+      "nodes": []
+    },
+    "fastlang": {
+      "name": "FastLang",
+      "key": "fastlang",
+      "urlPrefix": "docs/",
+      "nodes": []
+    }
+  },
+  "developing": {
+    "name": "Developing",
+    "title": "How to Contribute",
+    "key": "developing"
+  }
+}
