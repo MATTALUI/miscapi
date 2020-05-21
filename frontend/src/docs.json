@@ -1,26 +1,40 @@
 {
   "name": "MISCAPI",
   "intro": "Welcome to MISCAPI",
-  "overview": {
+  "main": {
     "name": "Overview"
+  },
+  "general": {
+    "making-requests": {
+      "name": "Making Requests",
+      "key": "making-requests"
+    },
+    "global-entities": {
+      "name": "Global Entities",
+      "key": "global-entites"
+    }
   },
   "apps": {
     "auto-logs": {
       "name": "AutoLogs",
       "key": "auto-logs",
-      "urlPrefix": "docs/",
+      "urlPrefix": "apps/",
+      "urlSuffix": "docs/",
       "nodes": []
     },
     "fastlang": {
       "name": "FastLang",
       "key": "fastlang",
-      "urlPrefix": "docs/",
+      "urlPrefix": "apps/",
+      "urlSuffix": "docs/",
       "nodes": []
     }
   },
-  "developing": {
-    "name": "Developing",
-    "title": "How to Contribute",
-    "key": "developing"
+  "followup": {
+    "developing": {
+      "name": "Developing",
+      "title": "How to Contribute",
+      "key": "developing"
+    }
   }
 }

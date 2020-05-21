@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import get from 'lodash/get';
 import values from 'lodash/values';
+import concat from 'lodash/concat';
 
 import docStore from '../stateBuilder';
 import { buildEntityUrl } from '../utils/urls';
@@ -15,26 +16,25 @@ import EntityView from './EntityView';
 
 const App = () => {
   const state = docStore.getState();
+  const main = get(state, 'main', {});
+  const general = get(state, 'general', {});
   const apps = get(state, 'apps', {});
-  const overview = get(state, 'overview', {});
-  const developing = get(state, 'developing', {});
+  const followup = get(state, 'followup', {});
+  const allEntities = concat(values(general), values(apps), values(followup));
 
   return (
     <Provider store={docStore}>
       <Router>
         <WithNavigation>
           <Switch>
-              <Route exact path={buildEntityUrl(overview)} component={()=>(
-                <EntityView entity={overview}/>
+              <Route exact path={buildEntityUrl(main)} component={()=>(
+                <EntityView entity={main}/>
               )}/>
-              {values(apps).map((app, i)=>(
-                <Route exact path={buildEntityUrl(app)} component={()=>(
-                  <EntityView entity={app} key={i}/>
+              {allEntities.map((entity, i)=>(
+                <Route exact path={buildEntityUrl(entity)} component={()=>(
+                  <EntityView entity={entity} key={i}/>
                 )}/>
               ))}
-              <Route exact path={buildEntityUrl(developing)} component={()=>(
-                <EntityView entity={developing}/>
-              )}/>
               <Route component={()=>(<>Oh no! You've found a 404!</>)}/>
           </Switch>
         </WithNavigation>

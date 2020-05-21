@@ -22,25 +22,19 @@ const useStyles = makeStyles(theme => ({
 
 const AppLinks = () => {
   const classes = useStyles();
+  const main = useSelector(state => get(state, 'main', {}));
+  const general = useSelector(state => get(state, 'general', {}));
   const apps = useSelector(state => get(state, 'apps', {}));
-  const overview = useSelector(state => get(state, 'overview', {}));
-  const developing = useSelector(state => get(state, 'developing', {}));
+  const followup = useSelector(state => get(state, 'followup', {}));
 
   return (
     <Box className={classes.linksContainer}>
-      {overview && (
-        <>
-          <AppLink text={overview.name} to={buildEntityUrl(overview)}/>
-          <Divider/>
-        </>
-      )}
+      {main && (<AppLink text={main.name} to={buildEntityUrl(main)}/>)}
+      {values(general).map((entity, i) => <AppLink key={i} text={entity.name} to={buildEntityUrl(entity)}/>)}
+      {!!main && !!values(general).length && <Divider/>}
       {values(apps).map((app, i) => <AppLink key={i} text={app.name} to={buildEntityUrl(app)}/>)}
-      {developing && (
-        <>
-          <Divider/>
-          <AppLink text={developing.name} to={buildEntityUrl(developing)}/>
-        </>
-      )}
+      {!!values(followup).length && <Divider/>}
+      {values(followup).map((entity, i) => <AppLink key={i} text={entity.name} to={buildEntityUrl(entity)}/>)}
     </Box>
   )
 };
