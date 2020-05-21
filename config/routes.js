@@ -47,23 +47,18 @@ const routes = {
   '/fastlang/graphql': { action: 'fastlang/graphql' },
 
   /////////// MISCAPI ///////////
-  'GET /static/*': {
+  // NOTE: I cannot for the life of me get the sails static assets pipeline to work so these are some hacks to get around that.
+  'GET /*': {
     skipAssets: false,
     fn: async (req, res) => {
       const filePath = path.join(__dirname, '../frontend/build', req.path);
-      console.log(filePath);
       if (fs.existsSync(filePath)){
         res.sendFile(filePath);
       } else {
-        res.sendStatus(404);
+        res.sendFile(path.join(__dirname,'../frontend/build/index.html'))
       }
     }
   },
-  'GET /*': {
-    skipAssets: false,
-    fn: async (req, res) => res.sendFile(path.join(__dirname,'../frontend/build/index.html')),
-  },
-  // 'GET /*': { action: 'miscapi' },
 };
 console.log(routes);
 

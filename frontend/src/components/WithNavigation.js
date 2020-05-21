@@ -1,13 +1,9 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import get from 'lodash/get';
 import {
   AppBar,
   Box,
-  Button,
   Toolbar,
-  Typography,
   makeStyles,
 } from '@material-ui/core';
 
@@ -35,6 +31,10 @@ const useStyles = makeStyles(theme => ({
   content: {
     backgroundColor: '#C1DFF0',
     paddingTop: '4rem',
+  },
+  logo: {
+    height: '3rem',
+    cursor: 'pointer',
   }
 }));
 
@@ -42,15 +42,12 @@ const WithNavigation = ({ children }) => {
   const history = useHistory();
   const classes = useStyles();
   const goHome = () => history.push('/');
-  const name = useSelector(state => get(state, 'name', 'Docs Name'));
 
   return (
     <>
       <AppBar className={classes.navbar}>
         <Toolbar>
-          <Typography  className={classes.title} onClick={goHome} data-test="navigation__home-button">
-            {name}
-          </Typography>
+          <img className={classes.logo} src={process.env.PUBLIC_URL + '/logo.png'} onClick={goHome} alt="miscapi-logo"/>
         </Toolbar>
       </AppBar>
       <Box className={classes.contentContainer}>

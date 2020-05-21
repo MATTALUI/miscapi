@@ -1,13 +1,10 @@
 import React from 'react';
 import { Provider } from 'react-redux'
-import { ThemeProvider } from '@material-ui/core/styles';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
-import { useSelector } from 'react-redux';
 import get from 'lodash/get';
 import values from 'lodash/values';
 

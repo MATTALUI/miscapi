@@ -2,7 +2,6 @@ import React from 'react';
 
 import {
   Box,
-  Divider,
   Typography,
   makeStyles,
 } from '@material-ui/core';
