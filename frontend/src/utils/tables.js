@@ -37,7 +37,9 @@ export const buildEntityAttributesTable = (attributes) => {
     keys(attributes).forEach(key => {
       let row = [key];
       let data = attributes[key];
-      extraKeys.forEach(extraKey => row.push(data[extraKey]));
+      extraKeys.forEach(extraKey => row.push(
+        get(data, extraKey, "")
+      ));
 
       tableRows.push(row);
     });

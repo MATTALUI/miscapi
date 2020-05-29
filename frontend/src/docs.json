@@ -16,8 +16,126 @@
       "key": "global-entites",
       "nodes": [],
       "entities": [{
-        "name": "User"
-      }]
+        "name": "User",
+        "explanation": "User objects exist within the global MISCAPI domain. They are critical in the process of getting authenticated.",
+        "note": "Since it is is a critical preauthorization step to have a user, User endpoints do not require typical authorization steps.",
+        "attributes": {
+          "id": {
+            "type": "PK",
+            "required": true,
+            "description": "Integer primary key for the User"
+          },
+          "email": {
+            "type": "string",
+            "required": true,
+            "description": "A unique email address for a user."
+          },
+          "firstName": {
+            "type": "string",
+            "required": true,
+            "description": "User's first name."
+          },
+          "lastName": {
+            "type": "string",
+            "required": true,
+            "description": "User's last name"
+          },
+          "nickName": {
+            "type": "string",
+            "required": false,
+            "description": "Optional field for Client convenience used for an easy reference to a user."
+          },
+          "description": {
+            "type": "string",
+            "required": false,
+            "description": "Optional field for Client convenience used to describe a user."
+          },
+          "vehicles": {
+            "type": "[Vehicle]",
+            "required": true,
+            "description": "A User has many Vehicles. Vehicles are entities within the Autologs namespace. If a user has no Vehicle objects associated with it, this will be represented as an empty array."
+          },
+          "logs": {
+            "type": "[Log]",
+            "required": true,
+            "description": "A User has many Logs. Logs are entities within the Autologs namespace. If a user has no Log objects associated with it, this will be represented as an empty array."
+          },
+          "cards": {
+            "type": "[Card]",
+            "required": true,
+            "description": "A User has many cards. Cards are entities within the Fastlang namespace. If a user has no Cards associated with it, this will be represented with an empty array."
+          },
+          "createdAt": {
+            "type": "number",
+            "required": true,
+            "description": "Metafield indicating the date the record was initially created."
+          },
+          "updatedAt": {
+            "type": "number",
+            "required": true,
+            "description": "Metafield indicating the date the record was last updated."
+          }
+        }
+      }],
+      "endpoints": [
+        {
+          "method": "GET",
+          "endpoint": "/global/user",
+          "description": "Returns the currently logged in user. Empty object if not logged in.",
+          "exampleResponse": {
+            "id": 1,
+            "createdAt": 1568061175093,
+            "updatedAt": 1588962034630,
+            "email": "matt@example.com",
+            "firstName": "Matthew",
+            "lastName": "Hummer",
+            "nickname": "MATTALUI",
+            "description": "I am Matt."
+          }
+        },
+        {
+          "method": "POST",
+          "endpoint": "/global/users",
+          "description": "Registers a new user to MISCAPI. In addition to the base User attributes, this endpoint also requires a password and confirmPassword data in order to enable a password for the user. These two much match in order to register the user. Since it also logs the user in, the return value includes the newly created User as well as the authenticated user token.",
+          "exampleResponse": {
+            "user": {
+              "id": 2,
+              "createdAt": 1588970425600,
+              "updatedAt": 1588970425600,
+              "email": "matt2@example.com",
+              "firstName": "Matt",
+              "lastName": "Bummer",
+              "nickname": "NEW MATTALUI",
+              "description": "I am Matt."
+            },
+            "userToken": "SUPERSECRETTOKENWOWZA"
+          }
+        },
+        {
+          "method": "POST",
+          "endpoint": "/global/user/session",
+          "description": "Logs a user in based on the provided email and password data that is submitted. Returns an object containing the User data, as well as an authenticated user token for the use of non-cookie based clients.",
+          "exampleResponse": {
+            "user": {
+              "id": 1,
+              "createdAt": 1568061175093,
+              "updatedAt": 1588962034630,
+              "email": "matt@example.com",
+              "firstName": "Matthew",
+              "lastName": "Hummer",
+              "nickname": "MATTALUI",
+              "description": "I am Matt."
+            },
+            "userToken": "SUPERSECRETTOKENWOWZA"
+          }
+        },
+        {
+          "method": "DELETE",
+          "endpoint": "/global/user/session",
+          "description": "Logs a user out of the application by removing any cookie-based application data. Returns boolean indicating whether or not logout was successful.",
+          "exampleResponse": true
+        }
+      ]
     }
   },
   "apps": {
