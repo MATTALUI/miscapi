@@ -36,8 +36,8 @@ const TableOfContents = ({ entity }) => {
                   <Typography component="a" href="#entities">Entities</Typography>
                 </li>
                 <ul>
-                  {entities.map(entity => (
-                    <li>
+                  {entities.map((entity, i) => (
+                    <li key={i}>
                       <Typography component="a" href={`#entity-${entity.name}`}>{startCase(entity.name)}</Typography>
                     </li>
                   ))}
@@ -50,8 +50,8 @@ const TableOfContents = ({ entity }) => {
                   <Typography component="a" href="#api">API</Typography>
                 </li>
                 <ul>
-                  {endpoints.map(endpoint => (
-                    <li>
+                  {endpoints.map((endpoint, i) => (
+                    <li key={i}>
                       <Typography component="a" href={`#api-${endpoint.endpoint.replace(/\//gi,'-')}`}>{`${endpoint.method.toUpperCase()} ${endpoint.endpoint}`}</Typography>
                     </li>
                   ))}

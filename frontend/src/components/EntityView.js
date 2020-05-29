@@ -53,7 +53,7 @@ const EntityView = ({ entity }) => {
         <>
           <Divider className={classes.dividers}/>
           <Typography id="api" variant="h3">API</Typography>
-          {endpoints.map(endpoint => <AppEndpointView endpoint={endpoint}/>)}
+          {endpoints.map((endpoint, i) => <AppEndpointView key={i} endpoint={endpoint}/>)}
         </>
       )}
     </Box>

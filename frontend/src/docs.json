@@ -13,7 +13,41 @@
   "general": {
     "making-requests": {
       "name": "Making Requests",
-      "key": "making-requests"
+      "key": "making-requests",
+      "nodes": [
+        {
+          "text": "There are two keys that are absolutely critical in sending requests to most MISCAPI applications. The first is an application identifier and the second is some sort of user authentication."
+        },
+        {
+          "note": "It should be assumed that all endpoints referenced within MISCAPI required both of these pieces of data to authenticate unless it is explicitly stated otherwise."
+        },
+        {
+          "type": "section",
+          "header": "Application Authorization",
+          "text": "The application identifier is a unique, secret string that is issued to any registered clients. It is subapplication specific, so multiple secrets will be needed for any cross-namespace applications. It is supplied to the application using the Authorization header with a Basic: value."
+        },
+        {
+          "pre": "Authorization Basic: $APPLICATION_AUTHORIZATION_KEY",
+          "language": "shell"
+        },
+        {
+          "type": "section",
+          "header": "User Authentication",
+          "text": "Most subapplications require an authenticated user in order to provide access. A user is required unless otherwise stated. This user can be provided in one of two ways.\nThe first is using a browser-based cookie system. When successful POST requests are made to the user session endpoing, the user token is set as a cookie. This is all that is needed for most web-based clients.\nThe second is by providing a user token via the X-Identity header. This is a less preferred method and will be evaluated only if the access cookie does not exist. The user token is returned as part of the authentication process. These tokens are used to identify users and access information, so they should be closely guarded."
+        },
+        {
+          "pre": "X-Identity $AUTHORIZED_USER_TOKEN",
+          "language": "shell"
+        },
+        {
+          "type": "section",
+          "header": "Request Example"
+        },
+        {
+          "pre": "curl \\\n\t-H \"Authorization: Basic: $AUTOLOGS_AUTHORIZATION_KEY\" \\\n\t-H \"X-Identity: $AUTHORIZED_USER_TOKEN\" \\\n\thttp://miscapi.herokuapp.com/auto-logs/logs",
+          "language": "shell"
+        }
+      ]
     },
     "global-entities": {
       "name": "Global Entities",

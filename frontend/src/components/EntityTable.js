@@ -31,13 +31,13 @@ const EntityTable = ({ data }) => {
       <Table size="small">
         <TableHead>
           <TableRow>
-            {header.map(item => <TableCell>{startCase(item)}</TableCell>)}
+            {header.map((item, i) => <TableCell key={i}>{startCase(item)}</TableCell>)}
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
-            <TableRow>
-              {row.map(item => <TableCell>{new String(item)}</TableCell>)}
+          {rows.map((row, i) => (
+            <TableRow key={i}>
+              {row.map((item, j) => <TableCell key={j}>{item.toString()}</TableCell>)}
             </TableRow>
           ))}
         </TableBody>
