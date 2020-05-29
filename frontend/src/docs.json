@@ -3,7 +3,8 @@
   "intro": "Welcome to MISCAPI",
   "main": {
     "name": "Overview",
-    "intro": "Hello! Welcome to MISCAPI."
+    "intro": "MISCAPI is a multi-namespaces API containing a framework for building smaller sub-APIs.\nThe idea is that instead of starting a new API project from scratch every time an app idea is born, a large, overarching API can be built that will house endpoints for a project. That means that project APIs can be built faster since there's already an existing method for basic things like user registration and authentication, model-based querying ORMs, and routing. Spinning up new projects can be faster than ever before!\nSince MISCAPI is built on top of technologies like Sails.js and Express.js, there is a good balance of opinionated design as well as flexibility. For example, there are existing subapps within MISCAPI that use both REST as well as GraphQL for querying!",
+    "nodes": []
   },
   "general": {
     "making-requests": {
@@ -431,7 +432,11 @@
       "key": "fastlang",
       "urlPrefix": "apps/",
       "urlSuffix": "docs/",
-      "nodes": [],
+      "nodes": [
+        {
+          "note": "Documentation coming soon."
+        }
+      ],
       "entities": []
     }
   },

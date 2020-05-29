@@ -13,6 +13,7 @@ import AppEntityView from './AppEntityView';
 import AppEndpointView from './AppEndpointView';
 import NodeViewMap from './NodeViewMap';
 import TableOfContents from './TableOfContents';
+import NodeEntityMapper from './NodeEntityMapper';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -43,12 +44,12 @@ const EntityView = ({ entity }) => {
           {entities.map(entity => <AppEntityView entity={entity}/>)}
         </>
       )}
-      {!!nodes.length && nodes.map(node => (
+      {!!nodes.length && (
         <>
           <Divider className={classes.dividers}/>
-          <>Node!</>
+          {nodes.map(node => (<NodeEntityMapper node={node}/>))}
         </>
-      ))}
+      )}
       {!!endpoints.length && (
         <>
           <Divider className={classes.dividers}/>
