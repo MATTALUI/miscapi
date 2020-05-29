@@ -11,7 +11,6 @@ import Paragraphs from './Paragraphs';
 
 import AppEntityView from './AppEntityView';
 import AppEndpointView from './AppEndpointView';
-import NodeViewMap from './NodeViewMap';
 import TableOfContents from './TableOfContents';
 import NodeEntityMapper from './NodeEntityMapper';
 
@@ -41,13 +40,13 @@ const EntityView = ({ entity }) => {
         <>
           <Divider className={classes.dividers}/>
           <Typography id="entities" variant="h3">Entities</Typography>
-          {entities.map(entity => <AppEntityView entity={entity}/>)}
+          {entities.map((entity, i) => <AppEntityView key={i} entity={entity}/>)}
         </>
       )}
       {!!nodes.length && (
         <>
           <Divider className={classes.dividers}/>
-          {nodes.map(node => (<NodeEntityMapper node={node}/>))}
+          {nodes.map((node, i) => (<NodeEntityMapper key={i} node={node}/>))}
         </>
       )}
       {!!endpoints.length && (

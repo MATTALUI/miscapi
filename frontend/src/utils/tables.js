@@ -4,7 +4,6 @@ import values from 'lodash/values';
 import flatten from 'lodash/flatten';
 import concat from 'lodash/concat';
 import uniq from 'lodash/uniq';
-import startCase from 'lodash/startCase';
 import isEmpty from 'lodash/isEmpty';
 
 export const buildEndpointTableData = (endpoint) => {

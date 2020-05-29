@@ -4,7 +4,6 @@ import get from 'lodash/get';
 
 import {
   Box,
-  Divider,
   Typography,
   makeStyles,
 } from '@material-ui/core';

@@ -10,8 +10,8 @@ const NodeEntityMapper = ({ node }) => {
   const soloKey = get(keys(node), '0', 'unknown');
   const nodeType = node.type || soloKey;
 
-  // TODO: COnsider a more meaningful component for links
-  switch (soloKey) {
+  // TODO: Consider a more meaningful component for links
+  switch (nodeType) {
     case 'note':
       return <Note>{node.value || node.note}</Note>;
     case 'text':

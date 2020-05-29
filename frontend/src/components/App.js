@@ -31,8 +31,8 @@ const App = () => {
                 <EntityView entity={main}/>
               )}/>
               {allEntities.map((entity, i)=>(
-                <Route exact path={buildEntityUrl(entity)} component={()=>(
-                  <EntityView entity={entity} key={i}/>
+                <Route key={i} exact path={buildEntityUrl(entity)} component={()=>(
+                  <EntityView entity={entity}/>
                 )}/>
               ))}
               <Route component={()=>(<>Oh no! You've found a 404!</>)}/>

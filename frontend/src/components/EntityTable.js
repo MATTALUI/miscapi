@@ -3,9 +3,7 @@ import get from 'lodash/get';
 import startCase from 'lodash/startCase';
 
 import {
-  Box,
   Paper,
-  Typography,
   Table,
   TableBody,
   TableCell,
@@ -39,7 +37,7 @@ const EntityTable = ({ data }) => {
         <TableBody>
           {rows.map(row => (
             <TableRow>
-            {row.map(item => <TableCell>{new String(item)}</TableCell>)}
+              {row.map(item => <TableCell>{new String(item)}</TableCell>)}
             </TableRow>
           ))}
         </TableBody>

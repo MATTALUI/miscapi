@@ -5,8 +5,6 @@ import JSONPrettyMon from 'react-json-pretty/themes/monikai.css';
 
 import {
   Box,
-  Divider,
-  Typography,
   makeStyles,
 } from '@material-ui/core';
 
