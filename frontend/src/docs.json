@@ -4,7 +4,11 @@
   "main": {
     "name": "Overview",
     "intro": "MISCAPI is a multi-namespaces API containing a framework for building smaller sub-APIs.\nThe idea is that instead of starting a new API project from scratch every time an app idea is born, a large, overarching API can be built that will house endpoints for a project. That means that project APIs can be built faster since there's already an existing method for basic things like user registration and authentication, model-based querying ORMs, and routing. Spinning up new projects can be faster than ever before!\nSince MISCAPI is built on top of technologies like Sails.js and Express.js, there is a good balance of opinionated design as well as flexibility. For example, there are existing subapps within MISCAPI that use both REST as well as GraphQL for querying!",
-    "nodes": []
+    "nodes": [
+      {
+        "note": "This documentation is a part of the project as well. We're working towards building a documentation generator that will update the \"state\" of this documentation every time changes are made. As we're still working towards that you may notice that there are some rough edges and incompletions here and there. Got feedback? Let us know and we'll try and take care of it!"
+      }
+    ]
   },
   "general": {
     "making-requests": {
@@ -562,7 +566,15 @@
     "developing": {
       "name": "Developing",
       "title": "How to Contribute",
-      "key": "developing"
+      "key": "developing",
+      "nodes": [
+        {
+          "text": "Better contribution guidelines are in the works. For now, if you would like to contribute, open a PR to the repo and your changes will be reviewed."
+        },
+        {
+          "link": "https://github.com/MATTALUI/miscapi"
+        }
+      ]
     }
   }
 }

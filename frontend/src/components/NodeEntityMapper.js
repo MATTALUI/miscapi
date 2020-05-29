@@ -9,13 +9,15 @@ import Paragraphs from './Paragraphs';
 const NodeEntityMapper = ({ node }) => {
   const soloKey = get(keys(node), '0', 'unknown');
   const nodeType = node.type || soloKey;
-  let ele;
 
+  // TODO: COnsider a more meaningful component for links
   switch (soloKey) {
     case 'note':
       return <Note>{node.value || node.note}</Note>;
     case 'text':
       return <Paragraphs>{node.value || node.text}</Paragraphs>;
+    case 'link':
+      return <a href={node.value|| node.link}>{node.value|| node.link}</a>
     default:
       return <EntityView entity={node} />;
   }
