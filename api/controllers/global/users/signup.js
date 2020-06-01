@@ -52,8 +52,9 @@ module.exports = {
     const saltRounds = 10;
     const hash = await bcrypt.hash(password, saltRounds);
 
+    let newUser = {};
     try {
-      const newUser = await Users.create({
+      newUser = await Users.create({
         passwordHash: hash,
         email,
         firstName,
@@ -63,6 +64,7 @@ module.exports = {
       }).fetch();
       delete newUser.passwordHash;
     } catch (error){
+      console.error(error);
       this.res.status(406);
       return { error: "User for that email already exists." };
     }
