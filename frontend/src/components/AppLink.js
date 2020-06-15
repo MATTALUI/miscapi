@@ -1,5 +1,6 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
+import classnames from 'classnames';
 import {
   Box,
   Typography,
@@ -8,7 +9,7 @@ import {
 
 const useStyles = makeStyles(theme => ({
   linkBox: {
-    backgroundColor: "#3587A4",
+    backgroundColor: '#3587A4',
     margin: "1rem 0",
     borderRadius: '0.5rem',
     '&:hover': {
@@ -18,15 +19,24 @@ const useStyles = makeStyles(theme => ({
   },
   link: {
     fontSize: '1.5rem',
+  },
+  selected: {
+    backgroundColor: '#C1DFF0',
+    color: '#1C3144'
   }
 }));
 
 const AppLink = ({ text, to }) => {
-  const classes = useStyles();
   const history = useHistory();
+  const { pathname } = useLocation();
+  const classes = useStyles({
+    match: to === pathname,
+  });
 
   return (
-    <Box className={classes.linkBox} onClick={() => history.push(to)}>
+    <Box className={classnames(classes.linkBox, {
+      [classes.selected]: to === pathname,
+    })} onClick={() => history.push(to)}>
       <Typography className={classes.link}>{text}</Typography>
     </Box>
   )
