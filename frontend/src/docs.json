@@ -187,7 +187,7 @@
       "entities": [{
           "name": "User",
           "explanation": "User objects exist within the global MISCAPI domain, and so are not directly accessible via the auto-log application namespace. However, these are the relevant relationships that exist within the auto-log scope.",
-          "note": "For more on managing User objects, see the <a href=''>global MISCAPI documentation</a>.",
+          "note": "For more on managing User objects, see the <a href='/global-entites/#entity-User'>global MISCAPI documentation</a>.",
           "attributes": {
             "id": {
               "type": "PK",
@@ -588,12 +588,123 @@
       "key": "fastlang",
       "urlPrefix": "apps/",
       "urlSuffix": "docs/",
-      "nodes": [
+      "intro": "Fastlang is an API that allows clients to create language-learning applications by defining things like languages and flash cards. Wanna learn a language quickly? Then you're gonna wanna live your life in the Fastlang!",
+      "nodes": [],
+      "entities": [
         {
-          "note": "Documentation coming soon."
+          "name": "User",
+          "explanation": "User objects exist within the global MISCAPI domain, and so are not directly accessible via the fastlang application namespace. However, these are the relevant relationships that exist within the fastlang scope.",
+          "note": "For more on managing User objects, see the <a href='/global-entites/#entity-User'>global MISCAPI documentation</a>.",
+          "attributes": {
+            "id": {
+              "type": "PK",
+              "required": true,
+              "description": "Integer primary key for the User"
+            },
+            "cards": {
+              "type": "[Card]",
+              "required": true,
+              "description": "A User has many Cards. If a user has no Card objects associated with it, this will be represented as an empty array."
+            }
+          }
+        },
+        {
+          "name": "Language",
+          "explanation": "A Language is the most fundamental piece of any language learning application. All Cards and CardWords rely on having a Language available in order to learn.",
+          "attributes": {
+            "id": {
+              "type": "PK",
+              "required": true,
+              "description": "Integer primary key for the Language"
+            },
+            "name": {
+              "type": "string",
+              "required": true,
+              "description": "The name of the language."
+            },
+            "shortCode": {
+              "type": "string",
+              "required": true,
+              "description": "A short code that represents the language. Ex: SPA (Spanish)"
+            },
+            "color": {
+              "type": "string",
+              "required": false,
+              "description": "A color that can be used to represent a language when displaying words on a flashcard. This field is purposefully very liberal so that clients can consume as needed."
+            },
+            "description": {
+              "type": "PK",
+              "required": false,
+              "description": "A short description of the Language."
+            },
+            "words": {
+              "type": "[CardWord]",
+              "required": true,
+              "description": "A list of words that belong to a language. These words are based off of the CardWords that are added to cards."
+            }
+          }
+        },
+        {
+          "name": "Card",
+          "explanation": "A Card conatins the definition for a flashcard that the user creates. This definition will probably be in the native labnguage of the user. A Card can have many CardWords which are the Language-specific translations of the definition on the card.",
+          "note": "",
+          "attributes": {
+            "id": {
+              "type": "PK",
+              "required": true,
+              "description": "Integer primary key for the Card"
+            },
+            "definition": {
+              "type": "string",
+              "required": true,
+              "description": "This key represents the user's definition for a translation in their own words."
+            },
+            "currentSet": {
+              "type": "boolean",
+              "required": true,
+              "description": "A boolean calue used to represent whether a  word is in a User's \"current set\". This means that clients can toggle whether or not a word will be fetched with general requests and therefore filter out things like \"old\" or \"passed\" words. Defaults to True."
+            },
+            "user": {
+              "type": "FK",
+              "required": true,
+              "description": "Integer ID representing the User that the Card belongs to. This value will be set by the API based on the current logged in User."
+            },
+            "words": {
+              "type": "[CardWord]",
+              "required": true,
+              "description": "All of the Language-specific translations given by a user for a card. If a Card has no CardWord objects associated with it, this will be represented as an empty array."
+            }
+          }
+        },
+        {
+          "name": "CardWord",
+          "explanation": "",
+          "note": "",
+          "attributes": {
+            "id": {
+              "type": "PK",
+              "required": true,
+              "description": "Integer primary key for the CardWord"
+            },
+            "value": {
+              "type": "string",
+              "required": true,
+              "description": "The Language translation value for the definition of the Card the CardWord belongs to."
+            },
+            "language": {
+              "type": "FK",
+              "required": true,
+              "description": "Integer ID representing the Language the CardWord value is translated for."
+            },
+            "card": {
+              "type": "FK",
+              "required": true,
+              "description": "Integer ID representing the Card the CardWord belongs to."
+            }
+          }
         }
       ],
-      "entities": []
+      "endpoints": []
     }
   },
   "followup": {
