@@ -12,12 +12,14 @@ module.exports = {
   },
   exits: {},
   fn: async function ({ stockId }) {
-    Stocks.create({
+    const newStock = await Stocks.create({
       ticker: stockId.toUpperCase(),
       user: this.req.user.id,
-    });
-    const data = await getStockData([stockId.toUpperCase()]);
-    
-    return data[0];
+    }).fetch();
+
+    return newStock;
+    // const data = await getStockData([stockId.toUpperCase()]);
+
+    // return data[0];
   }
 };

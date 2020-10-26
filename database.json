@@ -1,5 +1,5 @@
 {
-  "defaultEnv": "production",
+  "defaultEnv": "development",
   "development": {
     "driver": "pg",
     "database": "miscapi",
@@ -7,6 +7,7 @@
     "port": 5432
   },
 
+  "__comment": "heroku run 'db-migrate up --config ./database.json -e production'",
   "production": {
     "driver": "pg",
     "database_url": {
