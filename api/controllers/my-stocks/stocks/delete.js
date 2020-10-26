@@ -10,6 +10,6 @@ module.exports = {
   },
   exits: {},
   fn: async function ({ stockId }) {
-    return await Stocks.destroyOne({ ticker: stockId, user: this.req.user.id });
+    return await Stocks.destroyOne({ ticker: stockId.toUpperCase(), user: this.req.user.id });
   }
 };

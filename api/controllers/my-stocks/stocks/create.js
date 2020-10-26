@@ -17,9 +17,8 @@ module.exports = {
       user: this.req.user.id,
     }).fetch();
 
-    return newStock;
-    // const data = await getStockData([stockId.toUpperCase()]);
+    const data = await getStockData([stockId.toUpperCase()]);
 
-    // return data[0];
+    return data[0];
   }
 };
