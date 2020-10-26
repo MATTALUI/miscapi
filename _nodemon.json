@@ -1,10 +1,5 @@
 {
-  "__comment": "This file is a config file that can be used by nodemon while developing. In order to use it you'll have to rename the file from _nodemon to nodemon. Essentially, it will let the frontend know that it needs to build whenever changes are detected and restart has started. Likely, you will not need to take advantage of this because of the nature of the app, but it's here if you need it..."
-
-
-
-
-
+  "__comment": "This file is a config file that can be used by nodemon while developing. In order to use it you'll have to rename the file from _nodemon to nodemon. Essentially, it will let the frontend know that it needs to build whenever changes are detected and restart has started. Likely, you will not need to take advantage of this because of the nature of the app, but it's here if you need it...",
   "ignore": ["frontend/build/*"],
   "events": {
     "start": "cd frontend; npm run build"

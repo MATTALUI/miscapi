@@ -705,6 +705,20 @@
         }
       ],
       "endpoints": []
+    },
+    "travine": {
+      "name": "Travine",
+      "key": "travine",
+      "urlPrefix": "apps/",
+      "urlSuffix": "docs/",
+      "intro": "Travine is coming soon..."
+    },
+    "my-stocks": {
+      "name": "My Stocks",
+      "key": "my-stocks",
+      "urlPrefix": "apps/",
+      "urlSuffix": "docs/",
+      "intro": "My Stocks is coming soon..."
     }
   },
   "followup": {

@@ -46,6 +46,9 @@ const routes = {
   ////////// FASTLANG //////////
   '/fastlang/graphql': { action: 'fastlang/graphql' },
 
+  ////////// MY STOCKS /////////
+  ...resource('my-stocks', 'stock'),
+
   /////////// MISCAPI ///////////
   // NOTE: I cannot for the life of me get the sails static assets pipeline to work so these are some hacks to get around that.
   'GET /*': {

@@ -3,6 +3,7 @@
 const AUTHSMAP = {
   'auto-logs': `Basic: ${process.env.AUTOLOGAUTH}`,
   'fastlang': `Basic: ${process.env.FASTLANGAUTH}`,
+  'my-stocks': `Basic: ${process.env.STOCKSAUTH}`,
 };
 
 module.exports = async function authenticateApp(req, res, next){
